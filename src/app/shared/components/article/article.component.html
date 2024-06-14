@@ -1,0 +1,19 @@
+<div class="article">
+  <img class="article__img" src="{{article.image_url}}" alt="article-image" />
+  <div class="article__main-content">
+    <div class="article__time-container">
+      <mat-icon class="calendar-icon">calendar_today</mat-icon>
+      <p class="article__time">
+        {{ article.published_at | date: 'MMMM' }} {{ article.published_at |
+        date: 'd' | dateTransform }}, {{ article.published_at | date: 'yyyy'}}
+      </p>
+    </div>
+
+    <p class="article__title">{{article.title}}</p>
+    <p class="article__summary">{{article.summary}}</p>
+    <a class="read-more" routerLink="/detail/{{article.id}}"
+      >Read more
+      <mat-icon class="arrow-right-icon">arrow_forward</mat-icon>
+    </a>
+  </div>
+</div>

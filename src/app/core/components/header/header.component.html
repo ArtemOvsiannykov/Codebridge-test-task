@@ -1,0 +1,18 @@
+<div *ngIf="articles$ | async as articles" class="filter">
+  <div class="filter__container">
+    <form class="filter__form">
+      <label class="filter__name">Filter by keywords</label>
+      <input
+        class="filter__input"
+        type="text"
+        matInput
+        placeholder="Text for search"
+        [formControl]="searchControl"
+      />
+      <mat-icon class="filter__icon">search</mat-icon>
+    </form>
+    <div>
+      <p class="filter__articles-count">Results: {{ articles.length }}</p>
+    </div>
+  </div>
+</div>

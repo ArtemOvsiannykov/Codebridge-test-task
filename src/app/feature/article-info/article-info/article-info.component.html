@@ -1,0 +1,19 @@
+<div *ngIf="article" class="article-info">
+  <div
+    class="article-info__background-image"
+    style="background: url('{{article.image_url}}') 0 0/cover no-repeat"
+  ></div>
+  <div class="article-info__container">
+    <div class="article-info__main-content">
+      <p class="article-info__title">{{article.title}}</p>
+      <p class="article-info__description">{{article.summary}}</p>
+    </div>
+    <div class="homepage-link">
+      <a class="homepage-link__txt" (click)="navigateToMain()"
+        ><mat-icon class="homepage-link__arrow-icon"
+          >keyboard_backspace</mat-icon
+        >Back to homepage
+      </a>
+    </div>
+  </div>
+</div>

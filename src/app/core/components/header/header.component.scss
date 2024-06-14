@@ -1,0 +1,44 @@
+.filter {
+    &__container {
+        font-family: "Montserrat", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        color: #363636;
+        margin: 50px 0;
+    }
+
+    &__name {
+        display: inline-block;
+        line-height: 19.5px;
+        margin-bottom: 10px;
+    }
+
+    &__form {
+        position: relative;
+    }
+
+    &__input {
+        display: block;
+        width: 600px;
+        height: 50px;
+        box-sizing: border-box;
+        padding-left: 45px;
+        margin-bottom: 40px;
+        border: 0.5px solid lightgray;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #575757;
+    }
+
+    &__articles-count {
+        line-height: 19.5px;
+        border-bottom: 0.5px solid lightgray;
+    }
+
+    &__icon {
+        position: absolute;
+        top: 43px;
+        left: 15px;
+    }
+}
