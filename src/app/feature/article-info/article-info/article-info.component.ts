@@ -27,8 +27,8 @@ export class ArticleInfoComponent implements OnInit {
     this.subscription.unsubscribe();
   }
 
-  navigateToMain() {
-    this.router.navigate(['main']);
+  navigateToHomePage() {
+    this.router.navigate(['']);
   }
 
   private initSubscription(): void {
