@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   Observable,
   Subject,
-  Subscription,
   debounceTime,
   distinctUntilChanged,
   pipe,
@@ -23,6 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public articles$: Observable<Article[]>;
   private destroy$: Subject<void> = new Subject<void>();
   public filterArticlesLength: number;
+  public highlight: string;
 
   searchControl = new FormControl('');
 
@@ -38,6 +38,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
+  getFilterValue(): void {
+    this.searchControl.valueChanges
+      .pipe(
+        debounceTime(500),
+        distinctUntilChanged(),
+        switchMap((value: any) => {
+          this.articlesService.changeHighlight(value);
+          return this.articlesService.getFilterCourses(value);
+        }),
+        tap((value) => (this.filterArticlesLength = value.length)),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
+
   private initSubscription(): void {
     this.articlesService
       .getArticles()
@@ -45,20 +60,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
         tap(() => {
           this.articles$ = this.articlesService.articles$;
         }),
-        takeUntil(this.destroy$)
-      )
-      .subscribe();
-  }
-
-  getFilterValue(): void {
-    this.searchControl.valueChanges
-      .pipe(
-        debounceTime(500),
-        distinctUntilChanged(),
-        switchMap((value: any) => {
-          return this.articlesService.getFilterCourses(value);
-        }),
-        tap((value) => (this.filterArticlesLength = value.length)),
         takeUntil(this.destroy$)
       )
       .subscribe();

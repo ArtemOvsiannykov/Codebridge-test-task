@@ -11,7 +11,9 @@ export class ArticlesService {
   private articles$$: BehaviorSubject<Article[]> = new BehaviorSubject<
     Article[]
   >([]);
+  private highlightSource$$ = new BehaviorSubject<string>('');
 
+  currentHighlight$ = this.highlightSource$$.asObservable();
   articles$: Observable<Article[]> = this.articles$$.asObservable();
   article$: Observable<Article>;
 
@@ -41,5 +43,9 @@ export class ArticlesService {
         this.loaderService.hide();
       })
     );
+  }
+
+  changeHighlight(highlight: string) {
+    this.highlightSource$$.next(highlight);
   }
 }

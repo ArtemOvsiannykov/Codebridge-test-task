@@ -9,8 +9,14 @@
       </p>
     </div>
 
-    <p class="article__title">{{article.title}}</p>
-    <p class="article__summary">{{article.summary}}</p>
+    <p
+      [innerHTML]="highlightKeywords(article.title, searchValue)"
+      class="article__title"
+    ></p>
+    <p
+      [innerHTML]="highlightKeywords(article.summary, searchValue)"
+      class="article__summary"
+    ></p>
     <a class="read-more" routerLink="/detail/{{article.id}}"
       >Read more
       <mat-icon class="arrow-right-icon">arrow_forward</mat-icon>
