@@ -15,6 +15,7 @@ $article-img-height: 217px;
     margin-bottom: 40px;
 
     &__img {
+        display: inline-block;
         width: 100%;
         height: $article-img-height;
         border-radius: 5px 5px 0 0;

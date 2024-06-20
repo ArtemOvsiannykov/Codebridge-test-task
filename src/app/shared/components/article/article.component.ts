@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ArticlesService } from 'src/app/feature/articles/services/articles.service';
 import { HighlightPipe } from '../../pipes/highlight/highlight.pipe';
 import { Subscription } from 'rxjs';
+import { Article } from 'src/app/core/interfaces/article.interface ';
 
 @Component({
   selector: 'app-article',
@@ -9,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./article.component.scss'],
 })
 export class ArticleComponent implements OnInit {
-  @Input() article: any;
+  @Input() article: Article;
 
   private subscription: Subscription = new Subscription();
 

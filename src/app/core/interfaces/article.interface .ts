@@ -11,3 +11,10 @@ export interface Article {
   updated_at: string;
   url: string;
 }
+
+export interface ArticleResponse {
+  results: Article[];
+  count: number;
+  next: string;
+  previous: null;
+}
